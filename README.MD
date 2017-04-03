@@ -1,1 +1,1 @@
-aplikasi untuk peinjaman lcd
+aplikasi untuk peminjaman lcd

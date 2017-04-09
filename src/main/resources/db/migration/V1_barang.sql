@@ -1,4 +1,4 @@
-CREATE TABLE `products` (
+CREATE TABLE `Barang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kode` varchar(25) DEFAULT NULL,
   `nama` varchar(50) DEFAULT NULL,

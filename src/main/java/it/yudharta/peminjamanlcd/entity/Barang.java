@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Products implements Serializable {
+public class Barang implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,10 +28,10 @@ public class Products implements Serializable {
     @Column(name = "status")
     private String status;
 
-    public Products() {
+    public Barang() {
     }
 
-    public Products(Integer id) {
+    public Barang(Integer id) {
         this.id = id;
     }
 
@@ -77,10 +77,10 @@ public class Products implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Products)) {
+        if (!(object instanceof Barang)) {
             return false;
         }
-        Products other = (Products) object;
+        Barang other = (Barang) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -89,7 +89,7 @@ public class Products implements Serializable {
 
     @Override
     public String toString() {
-        return "it.yudharta.peminjamanlcd.entity.Products[ id=" + id + " ]";
+        return "it.yudharta.peminjamanlcd.entity.Barang[ id=" + id + " ]";
     }
     
 }

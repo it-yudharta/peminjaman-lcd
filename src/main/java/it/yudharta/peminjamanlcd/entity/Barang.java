@@ -5,12 +5,11 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Products implements Serializable {
+public class Barang implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -19,7 +18,7 @@ public class Products implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Size(max = 25)
-    @Column(name = "kode")
+    @Column(name = "kode", unique = true)
     private String kode;
     @Size(max = 50)
     @Column(name = "nama")
@@ -28,10 +27,10 @@ public class Products implements Serializable {
     @Column(name = "status")
     private String status;
 
-    public Products() {
+    public Barang() {
     }
 
-    public Products(Integer id) {
+    public Barang(Integer id) {
         this.id = id;
     }
 
@@ -77,10 +76,10 @@ public class Products implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Products)) {
+        if (!(object instanceof Barang)) {
             return false;
         }
-        Products other = (Products) object;
+        Barang other = (Barang) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

@@ -30,8 +30,10 @@ public class Barang implements Serializable {
     public Barang() {
     }
 
-    public Barang(Integer id) {
-        this.id = id;
+    public Barang(String kode, String nama, String status) {
+        this.kode = kode;
+        this.nama = nama;
+        this.status = status;
     }
 
     public Integer getId() {

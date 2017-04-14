@@ -1,12 +1,16 @@
 package it.yudharta.peminjamanlcd.entity;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 public class Barang implements Serializable {
@@ -26,6 +30,8 @@ public class Barang implements Serializable {
     @Size(max = 6)
     @Column(name = "status")
     private String status;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barang")
+    private Collection<Peminjaman> peminjaman;
 
     public Barang() {
     }
@@ -68,6 +74,15 @@ public class Barang implements Serializable {
         this.status = status;
     }
 
+    @XmlTransient
+    public Collection<Peminjaman> getPeminjaman() {
+        return peminjaman;
+    }
+
+    public void setPeminjaman(Collection<Peminjaman> peminjaman) {
+        this.peminjaman = peminjaman;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -90,7 +105,7 @@ public class Barang implements Serializable {
 
     @Override
     public String toString() {
-        return "it.yudharta.peminjamanlcd.entity.Products[ id=" + id + " ]";
+        return "it.yudharta.peminjamanlcd.entity.Barang_1[ id=" + id + " ]";
     }
     
 }

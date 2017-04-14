@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Home</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link data-th-replace="layout :: head"/>
     </head>
     <body>
-        <div>Halo Spring framework</div>
+        <div th:replace="layout :: navbar"></div>
+        <br/><br/><br/>
+        <div class="container">
+            <div>Halo Spring framework</div>
+        </div>
+        <div data-th-replace="layout :: footer"></div>
     </body>
 </html>

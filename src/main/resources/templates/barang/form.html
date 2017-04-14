@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit Barang</title>
+    </head>
+    <body>
+        <h1>Edit Barang</h1>
+        <form th:action="@{/barang/form}" method="post" th:object="${barang}">
+            <input type="hidden" name="id" th:field="*{id}" />
+            <div><label> Kode: <input type="text" name="kode" th:field="*{kode}"/></label></div>
+            <div><label> Deskripsi: <input type="text" name="nama" th:field="*{nama}"/></label></div>
+            <div><label> Status: <input type="text" name="status" th:field="*{status}"/></label></div>
+            <div><input type="submit" value="Simpan" /> <a th:href="@{/barang/list}">Kembali</a> </div>
+        </form>
+
+    </body>
+</html>

@@ -5,5 +5,5 @@ import it.yudharta.peminjamanlcd.entity.Barang;
 
 public interface BarangRepository extends PagingAndSortingRepository<Barang, Integer>{
     
-    public Barang findByKode(String kode);
+    Barang findByKode(String kode);
 }

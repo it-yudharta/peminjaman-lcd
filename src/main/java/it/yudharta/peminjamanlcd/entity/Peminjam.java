@@ -7,41 +7,57 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-public class Barang implements Serializable {
+public class Peminjam implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 25)
-    @Column(name = "kode", unique = true)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 25)
+    @Column(name = "kode")
     private String kode;
     @Size(max = 50)
     @Column(name = "nama")
     private String nama;
-    @Size(max = 6)
-    @Column(name = "status")
-    private String status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barang")
+    @Size(max = 20)
+    @Column(name = "telp")
+    private String telp;
+    @Size(max = 50)
+    @Column(name = "alamat")
+    private String alamat;
+    @Size(max = 30)
+    @Column(name = "jurusan")
+    private String jurusan;
+    @Size(max = 25)
+    @Column(name = "dosen")
+    private String dosen;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "peminjam")
     private Collection<Peminjaman> peminjaman;
 
-    public Barang() {
+    public Peminjam() {
     }
 
-    public Barang(String kode, String nama, String status) {
+    public Peminjam(String kode, String nama, String telp, String alamat, String jurusan, String dosen) {
         this.kode = kode;
         this.nama = nama;
-        this.status = status;
+        this.telp = telp;
+        this.alamat = alamat;
+        this.jurusan = jurusan;
+        this.dosen = dosen;
     }
-
+    
     public Integer getId() {
         return id;
     }
@@ -66,12 +82,36 @@ public class Barang implements Serializable {
         this.nama = nama;
     }
 
-    public String getStatus() {
-        return status;
+    public String getTelp() {
+        return telp;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTelp(String telp) {
+        this.telp = telp;
+    }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getJurusan() {
+        return jurusan;
+    }
+
+    public void setJurusan(String jurusan) {
+        this.jurusan = jurusan;
+    }
+
+    public String getDosen() {
+        return dosen;
+    }
+
+    public void setDosen(String dosen) {
+        this.dosen = dosen;
     }
 
     @XmlTransient
@@ -93,10 +133,10 @@ public class Barang implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Barang)) {
+        if (!(object instanceof Peminjam)) {
             return false;
         }
-        Barang other = (Barang) object;
+        Peminjam other = (Peminjam) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -105,7 +145,7 @@ public class Barang implements Serializable {
 
     @Override
     public String toString() {
-        return "it.yudharta.peminjamanlcd.entity.Barang_1[ id=" + id + " ]";
+        return "it.yudharta.peminjamanlcd.entity.Peminjam[ id=" + id + " ]";
     }
     
 }

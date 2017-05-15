@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{peminjaman.edit}">Edit Peminjaman</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link data-th-replace="layout :: head"/>
+    </head>
+    <body>
+        <div th:replace="layout :: navbar"></div>
+        <br/><br/><br/>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-xs-center" th:text="#{peminjaman.edit}">Edit Peminjaman</h2>
+                </div>
+                <div class="card-block">
+                    <form th:action="@{/peminjaman/form}" method="post" th:object="${peminjaman}">
+                        <input type="hidden" name="id" th:field="*{id}" />
+                        <div><label> Waktu Pinjam: <input type="text" name="waktu_pinjam" th:field="*{waktuPinjam}"/></label></div>
+                        <div><label> Waktu Kembali: <input type="text" name="waktu_kembali" th:field="*{waktuKembali}"/></label></div>
+                        <div><label> Lokasi: <input type="text" name="lokasi" th:field="*{lokasi}"/></label></div>
+                        <div><label> Kebutuhan : <input type="text" name="kebutuhan" th:field="*{kebutuhan}"/></label></div>
+                        <div><label> Jatuh Tempo: <input type="text" name="jatuh_tempo" th:field="*{jatuhTempo}"/></label></div>
+                        <div><input type="submit" value="Simpan" /> <a th:href="@{/peminjaman/list}">Kembali</a> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div data-th-replace="layout :: footer"></div>
+    </body>
+</html>

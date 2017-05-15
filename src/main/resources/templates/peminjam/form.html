@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{product.edit}">Edit Product</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link data-th-replace="layout :: head"/>
+    </head>
+    <body>
+        <div th:replace="layout :: navbar"></div>
+        <br/><br/><br/>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-xs-center" th:text="#{product.edit}">Edit Product</h2>
+                </div>
+                <div class="card-block">
+                    <form th:action="@{/peminjam/form}" method="post" th:object="${peminjam}">
+                        <input type="hidden" name="id" th:field="*{id}" />
+                        <div><label> Id: <input type="text" name="Id" th:field="*{Id}"/></label></div>
+                        <div><label> Kode: <input type="text" name="kode" th:field="*{kode}"/></label></div>
+                        <div><label> Nama: <input type="text" name="nama" th:field="*{nama}"/></label></div>
+                        <div><label> Telp: <input type="text" name="telp" th:field="*{telp}"/></label></div>
+                        <div><label> Alamat: <input type="text" name="alamat" th:field="*{alamat}"/></label></div>
+                        <div><label> Jurusan: <input type="text" name="jurusan" th:field="*{jurusan}"/></label></div>
+                        <div><label> Dosen: <input type="text" name="dosen" th:field="*{dosen}"/></label></div>
+                        <div><input type="submit" value="Simpan" /> <a th:href="@{/peminjam/list}">Kembali</a> </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div data-th-replace="layout :: footer"></div>
+    </body>
+</html>

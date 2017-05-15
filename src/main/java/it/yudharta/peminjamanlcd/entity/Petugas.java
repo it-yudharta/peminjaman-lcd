@@ -5,12 +5,12 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Products implements Serializable {
+public class Petugas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -18,21 +18,29 @@ public class Products implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 25)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 25)
     @Column(name = "kode")
     private String kode;
     @Size(max = 50)
     @Column(name = "nama")
     private String nama;
-    @Size(max = 6)
-    @Column(name = "status")
-    private String status;
+    @Size(max = 50)
+    @Column(name = "password")
+    private String password;
+    @Size(max = 20)
+    @Column(name = "jabatan")
+    private String jabatan;
 
-    public Products() {
+    public Petugas() {
     }
 
-    public Products(Integer id) {
-        this.id = id;
+    public Petugas(String kode, String nama, String password, String jabatan) {
+        this.kode = kode;
+        this.nama = nama;
+        this.password = password;
+        this.jabatan = jabatan;
     }
 
     public Integer getId() {
@@ -59,12 +67,20 @@ public class Products implements Serializable {
         this.nama = nama;
     }
 
-    public String getStatus() {
-        return status;
+    public String getPassword() {
+        return password;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getJabatan() {
+        return jabatan;
+    }
+
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
     }
 
     @Override
@@ -77,10 +93,10 @@ public class Products implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Products)) {
+        if (!(object instanceof Petugas)) {
             return false;
         }
-        Products other = (Products) object;
+        Petugas other = (Petugas) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -89,7 +105,7 @@ public class Products implements Serializable {
 
     @Override
     public String toString() {
-        return "it.yudharta.peminjamanlcd.entity.Products[ id=" + id + " ]";
+        return "it.yudharta.peminjamanlcd.entity.Petugas[ id=" + id + " ]";
     }
     
 }

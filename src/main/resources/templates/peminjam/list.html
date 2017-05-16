@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title th:text="#{product.title}">List of LCD Projector</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link data-th-replace="layout :: head"/>
+    </head>
+    <body>
+        <div th:replace="layout :: navbar"></div>
+        <br/><br/><br/>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-xs-center" th:text="#{product.title}">List of LCD Projector</h2>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item" data-th-classappend="${daftarPeminjam.isFirst()} ? 'disabled'">
+                                <a class="page-link" data-th-href="@{/peminjam/list}">First</a>
+                            </li>
+                            <li class="page-item" data-th-classappend="${daftarPeminjam.isFirst()} ? 'disabled'">
+                                <a class="page-link" data-th-href="@{/peminjam/list(page=${daftarPeminjam.getNumber()-1})}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" data-th-href="@{/peminjam/list(page=${daftarPeminjam.getNumber()})}"
+                                   data-th-text="${daftarPeminjam.getNumber()+1}">2</a>
+                            </li>
+                            <li class="page-item" data-th-classappend="${daftarPeminjam.isLast()} ? 'disabled'">
+                                <a class="page-link" data-th-href="@{/peminjam/list(page=${daftarPeminjam.getNumber()+1})}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" data-th-href="@{/peminjam/list(page=${daftarPeminjam.getTotalPages()-1})}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <a class="btn btn-primary" data-th-href="@{/peminjam/form}">Tambah Data</a>
+                </div>
+                <div class="card-block">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr class="row">
+                                <th class="col-sm-2">Id Peminjam</th>
+                                <th class="col-sm-6">Kode Peminjam</th>
+                                <th class="col-sm-2">Nama Peminjam</th>
+                                <th class="col-sm-2">Telp Peminjam</th>
+                                <th class="col-sm-2">Alamat Peminjam</th>
+                                <th class="col-sm-2">Jurusan Peminjam</th>
+                                <th class="col-sm-2">Dosen Peminjam</th>
+                                <th class="col-sm-2">Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr class="row" data-th-each="peminjam : ${daftarPeminjam}">
+                                <td class="col-sm-2" data-th-text="${peminjam.id}">PID0001</td>
+                                <td class="col-sm-6" data-th-text="${peminjam.kode}">MOUSE</td>
+                                <td class="col-sm-6" data-th-text="${peminjam.nama}">MOUSE</td>
+                                <td class="col-sm-6" data-th-text="${peminjam.telp}">MOUSE</td>
+                                <td class="col-sm-6" data-th-text="${peminjam.alamat}">MOUSE</td>
+                                <td class="col-sm-6" data-th-text="${peminjam.jurusan}">MOUSE</td>
+                                <td class="col-sm-6" data-th-text="${peminjam.dosen}">MOUSE</td>
+                                <td class="col-sm-2" data-th-text="${peminjam.status}">ADA</td>
+                                <td class="col-sm-2 row">
+                                    <a class="btn btn-sm btn-primary col-sm-6" data-th-href="@{/peminjam/form(id=${peminjam.id})}">Edit</a>
+                                    <form class="col-sm-6" data-th-action="@{/peminjam/delete(id=${peminjam.id})}" method="post">
+                                        <button class="btn btn-sm btn-primary" type="submit">Hapus</button>                                    
+                                    </form>                                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>            
+        </div>
+        <div data-th-replace="layout :: footer"></div>
+    </body>
+</html>

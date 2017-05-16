@@ -3,4 +3,4 @@
 </p>
 
 ## Tentang Aplikasi
-aplikasi untuk peminjaman lcd
+aplikasi untuk peminjaman lcd di universitas yudharta pasuruan.

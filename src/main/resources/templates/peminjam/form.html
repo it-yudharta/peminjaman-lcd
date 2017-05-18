@@ -11,12 +11,11 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="text-xs-center" th:text="#{product.edit}">Edit Product</h2>
+                    <h2 class="text-xs-center" th:text="#{borrower.edit}">Edit Product</h2>
                 </div>
                 <div class="card-block">
                     <form th:action="@{/peminjam/form}" method="post" th:object="${peminjam}">
                         <input type="hidden" name="id" th:field="*{id}" />
-                        <div><label> Id: <input type="text" name="Id" th:field="*{Id}"/></label></div>
                         <div><label> Kode: <input type="text" name="kode" th:field="*{kode}"/></label></div>
                         <div><label> Nama: <input type="text" name="nama" th:field="*{nama}"/></label></div>
                         <div><label> Telp: <input type="text" name="telp" th:field="*{telp}"/></label></div>

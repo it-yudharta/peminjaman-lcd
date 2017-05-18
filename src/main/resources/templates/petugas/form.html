@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title th:text="#{petugas.edit}">Edit Product</title>
+        <title th:text="#{officers.edit}">Edit Product</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link data-th-replace="layout :: head"/>
     </head>
@@ -11,14 +11,14 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="text-xs-center" th:text="#{petugas.edit}">Edit Petugas</h2>
+                    <h2 class="text-xs-center" th:text="#{officers.edit}">Edit Petugas</h2>
                 </div>
                 <div class="card-block">
                     <form th:action="@{/petugas/form}" method="post" th:object="${petugas}">
                         <input type="hidden" id="id" th:field="*{id}" />
                         <div><label> Kode: <input type="text" name="kode" th:field="*{kode}"/></label></div>
                         <div><label> Nama: <input type="text" name="nama" th:field="*{nama}"/></label></div>
-                        <div><label> Password: <input type="text" name="Password" th:field="*{Password}"/></label></div>
+                        <div><label> Password: <input type="password" name="Password" th:field="*{Password}"/></label></div>
                         <div><label> Jabatan: <input type="text" name="Jabatan" th:field="*{Jabatan}"/></label></div>
                         <div><input type="submit" value="Simpan" /> <a th:href="@{/petugas/list}">Kembali</a> </div>
                     </form>

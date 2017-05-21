@@ -1,19 +1,16 @@
 package it.yudharta.peminjamanlcd.entity;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-public class Barang implements Serializable {
+public class Petugas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -21,25 +18,29 @@ public class Barang implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 25)
-    @Column(name = "kode", unique = true)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 25)
+    @Column(name = "kode")
     private String kode;
     @Size(max = 50)
     @Column(name = "nama")
     private String nama;
-    @Size(max = 6)
-    @Column(name = "status")
-    private String status;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "barang")
-    private Collection<Peminjaman> peminjaman;
+    @Size(max = 50)
+    @Column(name = "password")
+    private String password;
+    @Size(max = 20)
+    @Column(name = "jabatan")
+    private String jabatan;
 
-    public Barang() {
+    public Petugas() {
     }
 
-    public Barang(String kode, String nama, String status) {
+    public Petugas(String kode, String nama, String password, String jabatan) {
         this.kode = kode;
         this.nama = nama;
-        this.status = status;
+        this.password = password;
+        this.jabatan = jabatan;
     }
 
     public Integer getId() {
@@ -66,21 +67,20 @@ public class Barang implements Serializable {
         this.nama = nama;
     }
 
-    public String getStatus() {
-        return status;
+    public String getPassword() {
+        return password;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    @XmlTransient
-    public Collection<Peminjaman> getPeminjaman() {
-        return peminjaman;
+    public String getJabatan() {
+        return jabatan;
     }
 
-    public void setPeminjaman(Collection<Peminjaman> peminjaman) {
-        this.peminjaman = peminjaman;
+    public void setJabatan(String jabatan) {
+        this.jabatan = jabatan;
     }
 
     @Override
@@ -93,10 +93,10 @@ public class Barang implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Barang)) {
+        if (!(object instanceof Petugas)) {
             return false;
         }
-        Barang other = (Barang) object;
+        Petugas other = (Petugas) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -105,7 +105,7 @@ public class Barang implements Serializable {
 
     @Override
     public String toString() {
-        return "it.yudharta.peminjamanlcd.entity.Barang_1[ id=" + id + " ]";
+        return "it.yudharta.peminjamanlcd.entity.Petugas[ id=" + id + " ]";
     }
     
 }
